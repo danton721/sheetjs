@@ -20491,8 +20491,9 @@ ixti = f[1][1]; r = f[1][2];
 					if(supbooks[bookidx] && supbooks[bookidx][nameidx]) o += supbooks[bookidx][nameidx].Name;
 					else if(supbooks[0] && supbooks[0][nameidx]) o += supbooks[0][nameidx].Name;
 					else {
-						var ixtidata = get_ixti_raw(supbooks, bookidx, opts).split(";;");
-						if(ixtidata[nameidx - 1]) o = ixtidata[nameidx - 1]; // TODO: confirm this is correct
+						var ixtidata = get_ixti_raw(supbooks, bookidx, opts);
+							  ixtidata = ixtidata ? ixtidata.split(";;") : undefined;
+						if(ixtidata && ixtidata[nameidx - 1]) o = ixtidata[nameidx - 1]; // TODO: confirm this is correct
 						else o += "SH33TJSERRX";
 					}
 					stack.push(o);
